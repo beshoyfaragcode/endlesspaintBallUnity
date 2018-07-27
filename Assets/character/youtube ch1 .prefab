@@ -1018,7 +1018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85a315a2ccf9f748b63ebb40a6a4f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1511951005688978}
   colors:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1077,7 +1076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85a315a2ccf9f748b63ebb40a6a4f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1867834736077152}
   colors:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1810,7 +1808,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
