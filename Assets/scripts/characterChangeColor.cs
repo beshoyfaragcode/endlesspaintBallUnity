@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class characterChangeColor : MonoBehaviour {
-	public GameObject character ;	
+		
 	public Gradient colors ;
 	public mapMaker map;
 	public luncher MapToColors ;
@@ -14,6 +14,7 @@ public class characterChangeColor : MonoBehaviour {
 	 Material[] NewcharacterMats;
 	 float[] randomFloats ;
 	 Color32 [] randomColorsFromGradient ;
+	MeshRenderer characterMeshRend;
 	// to here
 
 	// Use this for initialization
@@ -22,7 +23,10 @@ public class characterChangeColor : MonoBehaviour {
 		randomFloats = getFloatsArray();
 		checkFloatsArray(randomFloats);
 		randomColorsFromGradient = GetColorFromGradient(colors,randomFloats);
-		setMaterialColor(randomColorsFromGradient,characterMats);  
+		setMaterialColor(randomColorsFromGradient,characterMats); 
+		if(characterMesh == null ){
+			characterMeshRend.materials =  characterMats ;
+		} 
 		characterMesh.materials =  characterMats ;
 
 	}
@@ -32,10 +36,18 @@ public class characterChangeColor : MonoBehaviour {
 		
 	}
 	public void getCharacterInfo (){
-		character = this.gameObject ;
+	GameObject character = this.gameObject ;
 		characterMesh = this.GetComponent<SkinnedMeshRenderer>();
+		if(characterMesh == null ){
+	    characterMeshRend = this.GetComponent<MeshRenderer>();
+		}
 		colors = MapToColors.GetLevelsGradient(map);
-		characterMats = characterMesh.materials ;
+		if(characterMesh == null ){
+			characterMats = characterMeshRend.materials ;
+		} else {
+				characterMats = characterMesh.materials ;
+		}
+	
 	}
 	public float[] getFloatsArray (){
 	  float[] FloatsArray = new float[characterMats.Length];
@@ -116,6 +128,9 @@ public class characterChangeColor : MonoBehaviour {
 		
 		for (int i = 0; i < characterMaterials.Length; i++)
 		{
+			
+			characterMaterials[i].SetColor("_EmissionColor",colorsForCharacters[i]);
+		
 			characterMaterials[i].color = colorsForCharacters[i];
 		}
 
