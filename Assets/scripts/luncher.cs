@@ -67,7 +67,7 @@ public class luncher : MonoBehaviour {
 	 clamp = Mathf.Clamp(clamp,levels.Length,8) ;
 	 GradientColorKey[] MyKeys = new GradientColorKey[clamp]  ;
 	
-	 Debug.Log(clamp);
+	
 	for(int i = 0 ; i < clamp ;i++){
 
 		

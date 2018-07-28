@@ -16,7 +16,7 @@ public class mapMaker : MonoBehaviour {
     [Range(0,1)]
     public float presistance ;
     public float lacunarity ;
-    public int seed ;
+    public Int64 seed ;
     public Vector2 offSet;
     public  bool AtuoUpadate;
     public bool useFalloffmap;
@@ -32,6 +32,7 @@ public class mapMaker : MonoBehaviour {
     Queue<MapDataThread<MeshData>> MeshQueue = new Queue<MapDataThread<MeshData>> ();
 
     void Awake() {
+      seed = getRandomSeed.GetSeed();
         FallOffMap = FalloffMaker.MakefalloffMap(mapChunckSize);
     }
 

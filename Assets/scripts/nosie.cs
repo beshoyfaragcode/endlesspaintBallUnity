@@ -4,16 +4,17 @@ using UnityEngine;
 
 public static class nosie  {
 	public enum NormilizeMode{local,globle};
-public static float[,] GenrateNosieMap(int MapWidth,int MapHeight,float scale, int octaves,float persistance , float lacunarity,int seed,Vector2 offSet,NormilizeMode mode ) {
+public static float[,] GenrateNosieMap(int MapWidth,int MapHeight,float scale, int octaves,float persistance , float lacunarity,long seed,Vector2 offSet,NormilizeMode mode ) {
 		float Minscale = 0.000156257812515625781256250001562578125156257812562515625781251562578125625f;
 		float[,] noisemap = new float[MapWidth,MapHeight] ;
-		System.Random prng = new System.Random(seed);
-		Vector2[] octavesOffsets = new Vector2[octaves];
+		System.Random prng = new System.Random((int)seed);
+		
+		Vector2[] octavesOffsets = new Vector2[octaves + 1];
 		float MaxPossibleHeight = 0;
 		float amplitude = 1;
 		float frequency = 1;
 	
-		for(int i = 0; i < octaves;i++){
+		for(int i = 0; i <= octaves;i++){
 			float offSetX = prng.Next(-100000,100000)+offSet.x;
 			float offSetY = prng.Next(-100000,100000) - offSet.y;
 			octavesOffsets[i] = new Vector2(offSetX,offSetY);
@@ -35,7 +36,7 @@ public static float[,] GenrateNosieMap(int MapWidth,int MapHeight,float scale, i
 				amplitude = 1;
 				frequency = 1;
 				float noiseHeight = 0;
-				for(int i = 0; i < octaves;i++){
+				for(int i = 0; i <= octaves;i++){
 
 					float sampleX  =(x - halfWidth + octavesOffsets[i].x)/scale * frequency;
 					float sampleY  = (y - halfHeight + octavesOffsets[i].y)/scale * frequency ; 
