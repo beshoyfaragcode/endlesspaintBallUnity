@@ -9,32 +9,32 @@ public class character_controller : MonoBehaviour {
 	public static Vector2 input;
 	public static Vector2 inputDir;
 	public bool ruuning;
-	public float target_speed;
-	public float anmationspeedprect;
+	float target_speed;
+	float anmationspeedprect;
 	public float trunsmooth = 0.2f;
-	public float target   ;
-	public float trunvalsity ;
+	float target   ;
+	float trunvalsity ;
 	public float speedsmooth = 0.1f;
-	public float speedvalsity;
-	public float speednow ;
+	float speedvalsity;
+	float speednow ;
 	public Transform cameraT;
-	public float X;
-	public float smoothRunSpeed;
-	public float smoothWalkSpeed;
-	public float smoothRunAn;
-	public float smoothWalkAn ;
+	float X;
+	float smoothRunSpeed;
+	float smoothWalkSpeed;
+	float smoothRunAn;
+	float smoothWalkAn ;
 	public float RunAn = 1;
 	public float WalkAn = 0.5f;
 	public float gravity = -9.8f;
-	public float valY;
+	float valY;
 	public CharacterController controller;
-	public Vector3 val;
-	public float jumpHeight;
-	public float jumpVal;
-	public float acceleration;
-	public Vector3  valStart;
-	public Vector3  valEnd;
-	public Vector3  valAvg;
+	Vector3 val;
+	float jumpHeight;
+	float jumpVal;
+	float acceleration;
+	Vector3  valStart;
+	Vector3  valEnd;
+	Vector3  valAvg;
 	public float minJump;
 
 	
@@ -43,7 +43,7 @@ public class character_controller : MonoBehaviour {
 	void Start () {
 		controller.GetComponent<CharacterController>();
 		animator.GetComponent<Animator>();
-		cameraT = Camera.main.transform ;
+		//cameraT = Camera.main.transform ;
 		
 	}
 	
@@ -63,11 +63,13 @@ public class character_controller : MonoBehaviour {
 	}
 	if (inputDir != Vector2.zero){
 		 target =  Mathf.Atan2(inputDir.x,inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
+            /*
 		 if(target < 0){
         target = 360 + target ;
 
 
 		}
+        */
 		
 	transform.eulerAngles = Vector3.up * Mathf.SmoothDamp(transform.eulerAngles.y,target, ref trunvalsity, trunsmooth)  ;
 	}

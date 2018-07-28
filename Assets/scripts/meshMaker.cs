@@ -7,7 +7,7 @@ public static class meshMaker {
 public static MeshData GenerateTerrainMesh(float[,] HeightMap,float HeightMultiplier,AnimationCurve _HeightCurve,int LevelOfDetail ){
 	int simpleIncrent = (LevelOfDetail == 0)? 1:LevelOfDetail*2;
 	AnimationCurve HeightCurve = new AnimationCurve(_HeightCurve.keys);
-	int brordedWidth = HeightMap.GetLength (0);
+	int brordedWidth = HeightMap.GetLength(0);
 	int meshSize = brordedWidth - 2*simpleIncrent;
 	int meshSizeunSimple = brordedWidth - 2 ;
 	float TopLeftX = ( meshSizeunSimple-1)/-2f;

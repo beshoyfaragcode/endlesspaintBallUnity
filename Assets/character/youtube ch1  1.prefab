@@ -1081,32 +1081,13 @@ MonoBehaviour:
   runspeed: 60
   animator: {fileID: 95189783264907302}
   ruuning: 0
-  target_speed: 0
-  anmationspeedprect: -5.77
   trunsmooth: 1
-  target: 0
-  trunvalsity: 0
   speedsmooth: 0.1
-  speedvalsity: 0
-  speednow: 0
-  cameraT: {fileID: 4282234275424692}
-  X: 0
-  smoothRunSpeed: 0
-  smoothWalkSpeed: 0
-  smoothRunAn: 0
-  smoothWalkAn: 0
+  cameraT: {fileID: 0}
   RunAn: 1
   WalkAn: 0.5
   gravity: -9.8
-  valY: 0
   controller: {fileID: 143403676029962152}
-  val: {x: 0, y: 0, z: 0}
-  jumpHeight: 1
-  jumpVal: 0
-  acceleration: 0
-  valStart: {x: 0, y: 0, z: 0}
-  valEnd: {x: 0, y: 0, z: 0}
-  valAvg: {x: 0, y: 0, z: 0}
   minJump: 6
 --- !u!137 &137073571368603228
 SkinnedMeshRenderer:
