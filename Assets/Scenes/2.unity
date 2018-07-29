@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44427124, g: 0.4937225, b: 0.5730959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 113287690}
   - component: {fileID: 113287689}
   - component: {fileID: 113287688}
-  - component: {fileID: 113287691}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -185,50 +184,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 113287687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 3.1, z: -6.3}
+  m_LocalPosition: {x: 4.33, y: 3.53, z: -40.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &113287691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 113287687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88efe63a0b22ee42a6c7ecc5f2016e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mousesenc: 10
-  camX: 0
-  camY: 0
-  camZ: 0
-  cam: {fileID: 0}
-  X: 0
-  zSpred: 10
-  zFrecncy: 5
-  rotion: {x: 0, y: 0, z: 0}
-  target: {fileID: 0}
-  distancefromtraget: 2
-  targetSpred: 2
-  targetFrecncy: 0.015625
-  XMinMax: {x: -40, y: 85}
-  YMinMax: {x: 0, y: 50}
-  rotSmoothTime: 1.5015625
-  rotSmoothVal: {x: 0, y: 0, z: 0}
-  rotNow: {x: 0, y: 0, z: 0}
-  lockmouse: 0
-  posNow: {x: 0, y: 0, z: 0}
-  prePos: {x: 0, y: 0, z: 0}
-  Pos: {x: 0, y: 0, z: 0}
-  posSmoothTime: 1.5015625
-  posSmoothVal: {x: 0, y: 0, z: 0}
-  ClampX: {x: 0, y: 0}
-  ClampY: {x: 0, y: 0}
-  ClampZ: {x: 0, y: 0}
 --- !u!1 &1185705268
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +215,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -288,13 +249,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1185705268}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.45682034, y: -0.22804472, z: 0.12240462, w: 0.8510746}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 56.45, y: -30, z: 0}
 --- !u!1 &1235990152
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1235990153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,10 +287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 1235990152}
-  ampute: 5
-  frequency: 0.125
+  ampute: 50
+  frequency: 0.03125
   UseSinForX: 1
-  UseCosForY: 1
+  UseCosForY: 0
   UseTanForZ: 0
 --- !u!65 &1235990154
 BoxCollider:
@@ -358,7 +319,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ee4ec31d4b5262c42a2787b5e5196db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -393,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 1235990152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 5, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

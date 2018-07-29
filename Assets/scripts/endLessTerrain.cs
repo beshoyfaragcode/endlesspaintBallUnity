@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class endLessTerrain : MonoBehaviour {
-	static float scale = 1;
+    public Enemy enemy;
+    static float scale = 1;
 	public float realscale = 1;
 	public const float viewerMoveFromChunkUpdate = 25f;
 	public const float sqrViewerMoveFromChunkUpdate = viewerMoveFromChunkUpdate * viewerMoveFromChunkUpdate;
@@ -16,7 +17,8 @@ public class endLessTerrain : MonoBehaviour {
 	 public int chunkSize ;
     public int chunksInView;
 	public Material mapMat;
-	public LODinfo[] Levels; 
+	public LODinfo[] Levels;
+    
 
 
 
@@ -45,6 +47,7 @@ public class endLessTerrain : MonoBehaviour {
 	}
 
 	public void UpdateChunks(){
+
 		
         for(int i = 0 ; i < chunksShowen.Count;i++){
             chunksShowen[i].setvisable(false);
@@ -70,8 +73,9 @@ public class endLessTerrain : MonoBehaviour {
 				}
 			}
 		 }
-		 
-	}
+
+        enemy.UpdateEnemyMaps();
+    }
 	public class Chunk {
 		 GameObject meshObj;
 		 static Vector2 position ;
@@ -87,8 +91,9 @@ public class endLessTerrain : MonoBehaviour {
 		mapMaker.MapData mapDataChunck ;
 		bool HasMapDataChunck ;
 		int PreLevelsIndex = -1 ;
+       // public Enemy enemy;
 
-		public Chunk (Vector2 cord,int size,LODinfo [] Levels,Transform parent,Material Mat) {
+        public Chunk (Vector2 cord,int size,LODinfo [] Levels,Transform parent,Material Mat) {
 			this.Levels = Levels;
 			position = cord * size ;
 			bounds = new Bounds (position,Vector2.one * size);
@@ -132,6 +137,7 @@ public class endLessTerrain : MonoBehaviour {
 		*/
 		
 		public void updateChunk(){
+            
 			float viewNear = Mathf.Sqrt(bounds.SqrDistance(viewerPos));
 			bool visable = viewNear  <= MaxView ;
 			setvisable(visable);
@@ -170,7 +176,9 @@ public class endLessTerrain : MonoBehaviour {
 					
 		}	
 	setvisable(visable);
-		}
+           
+
+        }
 		public void setvisable (bool visable){
 
 		 	meshObj.SetActive (visable);

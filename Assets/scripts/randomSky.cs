@@ -35,7 +35,7 @@ public class randomSky : MonoBehaviour {
               material.SetFloat("_SunSize" ,Random.Range(0.044f,1.1f));
               material.SetFloat("_SunSizeConvergence",Random.Range(1.0f,10.0f));
               material.SetFloat("_AtmosphereThickness",Random.Range(0.0f,5.0f));
-              material.SetFloat("_Exposure",Random.Range(0.044f,1.1f));
+              material.SetFloat(" _Exposure",Random.Range(0.044f,1.1f));
               
 
 

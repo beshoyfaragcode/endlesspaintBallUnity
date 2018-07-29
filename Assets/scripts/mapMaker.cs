@@ -24,6 +24,7 @@ public class mapMaker : MonoBehaviour {
     public AnimationCurve MeshCurve ;
     public terrainTypes[] regions;
     public Vector2 chunckOffset ;
+    public int enmayMapChunkSize;
 
     float[,] FallOffMap;
 
@@ -32,7 +33,8 @@ public class mapMaker : MonoBehaviour {
     Queue<MapDataThread<MeshData>> MeshQueue = new Queue<MapDataThread<MeshData>> ();
 
     void Awake() {
-      seed = getRandomSeed.GetSeed();
+        enmayMapChunkSize = mapChunckSize;
+        seed = getRandomSeed.GetSeed();
         FallOffMap = FalloffMaker.MakefalloffMap(mapChunckSize);
     }
 
