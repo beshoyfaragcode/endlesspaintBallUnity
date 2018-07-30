@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System;
+
 using UnityEngine;
 
 public class endLessTerrain : MonoBehaviour {
@@ -25,8 +28,10 @@ public class endLessTerrain : MonoBehaviour {
 	public Dictionary<Vector2,Chunk> chunkDictionary = new Dictionary<Vector2,Chunk>() ;
     public static List<Chunk> chunksShowen = new List<Chunk>();
 
+   
 	public void Start(){
-	scale = realscale;
+      
+        scale = realscale;
 		
      MapGen = FindObjectOfType<mapMaker>();
 		chunkSize = mapMaker.mapChunckSize - 1;
@@ -39,7 +44,7 @@ public class endLessTerrain : MonoBehaviour {
 		viewerPos = new Vector2 (veiwer.position.x,veiwer.position.z) /scale;
 		if((viewerPosOld - viewerPos ).sqrMagnitude > viewerMoveFromChunkUpdate ){
 			viewerPosOld = viewerPos ;
-			UpdateChunks();
+			
 				
 		}
 		
@@ -48,8 +53,8 @@ public class endLessTerrain : MonoBehaviour {
 
 	public void UpdateChunks(){
 
-		
-        for(int i = 0 ; i < chunksShowen.Count;i++){
+        ThreadPool.QueueUserWorkItem(ThreadPoolUser);
+        for (int i = 0 ; i < chunksShowen.Count;i++){
             chunksShowen[i].setvisable(false);
         }
         chunksShowen.Clear();
@@ -73,10 +78,31 @@ public class endLessTerrain : MonoBehaviour {
 				}
 			}
 		 }
+      
+        ThreadStart EnemyMapThread = delegate
+        {
+            enemy.UpdateEnemyMaps();
+        };
+        new Thread(EnemyMapThread).Priority = System.Threading.ThreadPriority.Lowest;
+        new Thread(EnemyMapThread).IsBackground = true;
+        Debug.Log("getingEnemyMapFromThread");
+        new Thread(EnemyMapThread).Start();
+        Debug.Log("gotEnemyMapFromThread");
 
-        enemy.UpdateEnemyMaps();
     }
-	public class Chunk {
+    private void ThreadPoolUser(object state)
+    {
+        throw new NotImplementedException();
+       
+
+    }
+    private void ThreadPoolUser()
+    {
+        enemy.UpdateEnemyMaps();
+        UpdateChunks();
+
+    }
+    public class Chunk {
 		 GameObject meshObj;
 		 static Vector2 position ;
 		 Bounds bounds ;
@@ -182,9 +208,11 @@ public class endLessTerrain : MonoBehaviour {
 		public void setvisable (bool visable){
 
 		 	meshObj.SetActive (visable);
-			 
-            
-		}
+           
+           
+
+
+        }
         public bool isshowen(){
             return meshObj.activeSelf;
 }
@@ -206,6 +234,7 @@ public class endLessTerrain : MonoBehaviour {
 				}
 				 void onMeshRetruned(MeshData meshData){
 					 mesh = meshData.CreateMesh();
+                    
 					 
 					 HasMesh = true;
 					 updateChunkcallBack ();

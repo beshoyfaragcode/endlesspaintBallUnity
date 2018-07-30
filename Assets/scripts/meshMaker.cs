@@ -53,6 +53,7 @@ public static MeshData GenerateTerrainMesh(float[,] HeightMap,float HeightMultip
 		}
 	}
 	meshData.Bake();
+
 	return meshData ;
 }
 }
@@ -153,6 +154,7 @@ public class MeshData{
 		}
 	public Mesh CreateMesh (){
 		Mesh mesh = new Mesh();
+        mesh.Clear();
 		mesh.vertices = vertices;
 		mesh.triangles = triangles;
 		mesh.uv = uvs ;

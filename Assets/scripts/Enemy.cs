@@ -22,22 +22,40 @@ public class Enemy : MonoBehaviour {
     {
         for (int x = 0; x < (map.enmayMapChunkSize - 1); x++)
         {
-            for (int y = 0; y < (map.enmayMapChunkSize - 1); y++)
+            Vector2 Xkey = new Vector2(x, 0);
+            if (mapEndLess.chunkDictionary.ContainsKey(Xkey))
             {
-                Vector2 key = new Vector2(x, y);
-                if (mapEndLess.chunkDictionary.ContainsKey(key))
+                for (int y = 0; y < (map.enmayMapChunkSize - 1); y++)
                 {
-                    float[,] map = EmenyMap.GetNoise(key);
-                    EnemyMaps.Add(key, map);
-                    Debug.Log(" added enemy map at " + key);
-                }
-                else
-                {
-                    Debug.Log(" no enemy map at " + key);
-                }
+                    Vector2 key = new Vector2(x, y);
+                    if (mapEndLess.chunkDictionary.ContainsKey(key))
+                    {
+                        float[,] map = EmenyMap.GetNoise(key);
+                        if (EnemyMaps.ContainsKey(key))
+                        {
+                            //find off later 
+                        }
+                        else
+                        {
+                            EnemyMaps.Add(key, map);
+                            Debug.Log(" added enemy map at " + key);
+                        }
 
-             
+                    }
+                    else
+                    {
+                        Debug.Log(" no enemy map at " + key);
+                        break;
+                    }
+
+                    
+                }
+            }
+            else
+            {
+                break;
             }
         }
+
     }
 }
