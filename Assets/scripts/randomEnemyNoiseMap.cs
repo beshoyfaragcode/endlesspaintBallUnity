@@ -39,7 +39,7 @@ public class randomEnemyNoiseMap : MonoBehaviour {
         octaves = map.octaves;
         persistance = map.presistance;
         lacunarity = map.lacunarity;
-        Seed = map.seed;
+        Seed = getRandomSeed.GetSeed();
         offset = map.offSet;
         width = map.enmayMapChunkSize;
         height = map.enmayMapChunkSize;

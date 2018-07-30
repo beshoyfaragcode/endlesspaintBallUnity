@@ -44,9 +44,10 @@ public class endLessTerrain : MonoBehaviour {
 		viewerPos = new Vector2 (veiwer.position.x,veiwer.position.z) /scale;
 		if((viewerPosOld - viewerPos ).sqrMagnitude > viewerMoveFromChunkUpdate ){
 			viewerPosOld = viewerPos ;
-			
-				
-		}
+            UpdateChunks();
+
+
+        }
 		
 		
 	}

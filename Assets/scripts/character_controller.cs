@@ -18,7 +18,8 @@ public class character_controller : MonoBehaviour {
 	float speedvalsity;
 	float speednow ;
 	public Transform cameraT;
-	float X;
+    public CameraMove camera;
+    float X;
 	float smoothRunSpeed;
 	float smoothWalkSpeed;
 	float smoothRunAn;
@@ -49,6 +50,7 @@ public class character_controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       
 
 		if (Input.GetKey(KeyCode.Escape)){
 			Debug.Break();
@@ -62,7 +64,9 @@ public class character_controller : MonoBehaviour {
 		jump();
 	}
 	if (inputDir != Vector2.zero){
-		 target =  Mathf.Atan2(inputDir.x,inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
+            
+            
+            target =  Mathf.Atan2(inputDir.x,inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
             /*
 		 if(target < 0){
         target = 360 + target ;
@@ -70,8 +74,12 @@ public class character_controller : MonoBehaviour {
 
 		}
         */
-		
-	transform.eulerAngles = Vector3.up * Mathf.SmoothDamp(transform.eulerAngles.y,target, ref trunvalsity, trunsmooth)  ;
+
+            if (camera.fristPersonCam)
+            {
+                target = cameraT.rotation.eulerAngles.y + target;
+            }
+            transform.eulerAngles = Vector3.up * Mathf.SmoothDamp(transform.eulerAngles.y,target, ref trunvalsity, trunsmooth)  ;
 	}
 		
 	smoothRunSpeed = Mathf.Abs(Mathf.Sin(X * Time.smoothDeltaTime) * runspeed)  ;

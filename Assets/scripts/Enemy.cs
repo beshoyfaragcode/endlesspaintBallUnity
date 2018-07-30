@@ -20,12 +20,10 @@ public class Enemy : MonoBehaviour {
    
     public  void UpdateEnemyMaps()
     {
-        for (int x = 0; x < (map.enmayMapChunkSize - 1); x++)
+        for (int x = 0; x < (map.enmayMapChunkSize + 2); x++)
         {
-            Vector2 Xkey = new Vector2(x, 0);
-            if (mapEndLess.chunkDictionary.ContainsKey(Xkey))
-            {
-                for (int y = 0; y < (map.enmayMapChunkSize - 1); y++)
+           
+                for (int y = 0; y < (map.enmayMapChunkSize + 2); y++)
                 {
                     Vector2 key = new Vector2(x, y);
                     if (mapEndLess.chunkDictionary.ContainsKey(key))
@@ -39,6 +37,7 @@ public class Enemy : MonoBehaviour {
                         {
                             EnemyMaps.Add(key, map);
                             Debug.Log(" added enemy map at " + key);
+                            
                         }
 
                     }
@@ -51,11 +50,8 @@ public class Enemy : MonoBehaviour {
                     
                 }
             }
-            else
-            {
-                break;
-            }
+          
         }
 
     }
-}
+
