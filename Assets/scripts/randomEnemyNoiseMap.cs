@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class randomEnemyNoiseMap : MonoBehaviour {
     int height;
     int width;
