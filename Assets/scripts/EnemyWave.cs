@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyWave : MonoBehaviour {
     public int maxEnemies;
     public int EnemiesNow;
