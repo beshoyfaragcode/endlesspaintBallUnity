@@ -18,7 +18,6 @@ public class character_controller : MonoBehaviour {
 	float speedvalsity;
 	float speednow ;
 	public Transform cameraT;
-    public CameraMove camera;
     float X;
 	float smoothRunSpeed;
 	float smoothWalkSpeed;
@@ -75,10 +74,7 @@ public class character_controller : MonoBehaviour {
 		}
         */
 
-            if (camera.fristPersonCam)
-            {
-                target = cameraT.rotation.eulerAngles.y + target;
-            }
+            
             transform.eulerAngles = Vector3.up * Mathf.SmoothDamp(transform.eulerAngles.y,target, ref trunvalsity, trunsmooth)  ;
 	}
 		
