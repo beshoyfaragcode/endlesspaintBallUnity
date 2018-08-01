@@ -121,4 +121,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2a3302d580e5f46981c21d31030ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Prefabs/enemy map.prefab
   map: {fileID: 0}
+=======
+  maxEnemies: 10
+  EnemiesNow: 0
+  enemiesToPickFrom:
+  - prefab: {fileID: 1807827609137252, guid: 6d645ff3c94899847847bc04c5b15d79, type: 2}
+    parent: {fileID: 0}
+    rotion: {x: 32.15, y: 0, z: 32.15}
+  - prefab: {fileID: 1807827609137252, guid: 5996bbf77df02744d9ffe986cb253e86, type: 2}
+    parent: {fileID: 0}
+    rotion: {x: 32.15, y: 0, z: 32.15}
+  - prefab: {fileID: 1807827609137252, guid: aac8d8fe55cc8194bb954627bedd72ec, type: 2}
+    parent: {fileID: 0}
+    rotion: {x: 131, y: 0, z: 41}
+  Map: {fileID: 114347660706838864}
+  enemyYPos: 50
+  
+>>>>>>> 7104e713f0109abd74a74a927f2173352ea53bcc:Assets/Prefabs/enemy map 1.prefab
