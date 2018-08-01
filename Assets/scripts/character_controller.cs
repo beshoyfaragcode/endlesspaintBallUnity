@@ -74,11 +74,6 @@ public class character_controller : MonoBehaviour {
 		}
         */
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> 7104e713f0109abd74a74a927f2173352ea53bcc
             transform.eulerAngles = Vector3.up * Mathf.SmoothDamp(transform.eulerAngles.y,target, ref trunvalsity, trunsmooth)  ;
 	}
 		
