@@ -27,6 +27,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1024829982101412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4336147819171596}
+  m_Layer: 0
+  m_Name: cylinderes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1337453938573532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4639369456546632}
+  m_Layer: 0
+  m_Name: spheres
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1696312678729892
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +74,60 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1875622421559506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4479130682114826}
+  m_Layer: 0
+  m_Name: cubes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4336147819171596
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024829982101412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.385649, y: -13.443031, z: 23.349546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4695347619818836}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4479130682114826
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875622421559506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4695347619818836}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4639369456546632
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337453938573532}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4695347619818836}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695347619818836
 Transform:
   m_ObjectHideFlags: 1
@@ -55,6 +139,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4885355378386302}
+  - {fileID: 4479130682114826}
+  - {fileID: 4639369456546632}
+  - {fileID: 4336147819171596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,20 +169,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24551b311e115fe47a265710119564e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemies: 10
+  maxEnemies: 100
   EnemiesNow: 0
+  timeBeforeDestroy: 2
   enemiesToPickFrom:
   - prefab: {fileID: 1807827609137252, guid: 6d645ff3c94899847847bc04c5b15d79, type: 2}
-    parent: {fileID: 0}
+    parent: {fileID: 4479130682114826}
     rotion: {x: 32.15, y: 0, z: 32.15}
   - prefab: {fileID: 1807827609137252, guid: 5996bbf77df02744d9ffe986cb253e86, type: 2}
-    parent: {fileID: 0}
+    parent: {fileID: 4639369456546632}
     rotion: {x: 32.15, y: 0, z: 32.15}
   - prefab: {fileID: 1807827609137252, guid: aac8d8fe55cc8194bb954627bedd72ec, type: 2}
-    parent: {fileID: 0}
+    parent: {fileID: 4336147819171596}
     rotion: {x: 131, y: 0, z: 41}
   Map: {fileID: 114549524007288120}
   enemyYPos: 50
+  randomInts: 
+  randomIntsSize: 5
+  Children: []
+  childsize: 0
+  maxEnemiesPrecent: 0.5
 --- !u!114 &114549524007288120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,22 +214,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2a3302d580e5f46981c21d31030ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD:Assets/Prefabs/enemy map.prefab
   map: {fileID: 0}
-=======
-  maxEnemies: 10
-  EnemiesNow: 0
-  enemiesToPickFrom:
-  - prefab: {fileID: 1807827609137252, guid: 6d645ff3c94899847847bc04c5b15d79, type: 2}
-    parent: {fileID: 0}
-    rotion: {x: 32.15, y: 0, z: 32.15}
-  - prefab: {fileID: 1807827609137252, guid: 5996bbf77df02744d9ffe986cb253e86, type: 2}
-    parent: {fileID: 0}
-    rotion: {x: 32.15, y: 0, z: 32.15}
-  - prefab: {fileID: 1807827609137252, guid: aac8d8fe55cc8194bb954627bedd72ec, type: 2}
-    parent: {fileID: 0}
-    rotion: {x: 131, y: 0, z: 41}
-  Map: {fileID: 114347660706838864}
-  enemyYPos: 50
-  
-

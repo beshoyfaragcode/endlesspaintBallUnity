@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class endLessTerrain : MonoBehaviour {
     public Enemy enemy;
+    public EnemyWave wave;
     static float scale = 1;
 	public float realscale = 1;
 	public const float viewerMoveFromChunkUpdate = 25f;
@@ -22,6 +23,7 @@ public class endLessTerrain : MonoBehaviour {
     public int chunksInView;
 	public Material mapMat;
 	public LODinfo[] Levels;
+   
     
 
 
@@ -45,7 +47,9 @@ public class endLessTerrain : MonoBehaviour {
 		viewerPos = new Vector2 (veiwer.position.x,veiwer.position.z) /scale;
 		if((viewerPosOld - viewerPos ).sqrMagnitude > viewerMoveFromChunkUpdate ){
 			viewerPosOld = viewerPos ;
+           wave.SetRandomInts( wave.childsize);
             UpdateChunks();
+            
 
 
         }
@@ -84,6 +88,7 @@ public class endLessTerrain : MonoBehaviour {
         ThreadStart EnemyMapThread = delegate
         {
             enemy.UpdateEnemyMaps();
+            wave.GetEnemyMaps();
         };
         new Thread(EnemyMapThread).Priority = System.Threading.ThreadPriority.Lowest;
         new Thread(EnemyMapThread).IsBackground = true;
@@ -94,13 +99,14 @@ public class endLessTerrain : MonoBehaviour {
     }
     private void ThreadPoolUser(object state)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException("Thread Pool ");
        
 
     }
     private void ThreadPoolUser()
     {
         enemy.UpdateEnemyMaps();
+        wave.GetEnemyMaps();
         UpdateChunks();
 
     }
