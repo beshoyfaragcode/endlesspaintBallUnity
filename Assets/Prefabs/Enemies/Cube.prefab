@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23834208819840514}
   - component: {fileID: 65600896109557582}
   - component: {fileID: 54220060689898668}
+  - component: {fileID: 195778808021928398}
+  - component: {fileID: 114980818280009646}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807827609137252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -108.31884, y: 110.374054, z: -217.79279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,4 +114,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
-
+--- !u!114 &114980818280009646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807827609137252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701f21e32a9f4094fad3e74b1ddcbb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4329981959695438, guid: 85a247366e8d9de4ab473bea2beb19a7, type: 2}
+  Enemy: {fileID: 195778808021928398}
+  rb: {fileID: 0}
+--- !u!195 &195778808021928398
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807827609137252}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.71
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1.17
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.87
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

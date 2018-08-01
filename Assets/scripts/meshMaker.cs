@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public static class meshMaker {
+using UnityEngine.AI;
+public  class meshMaker {
+    public int[,] vertexInicesPub;
 
 public static MeshData GenerateTerrainMesh(float[,] HeightMap,float HeightMultiplier,AnimationCurve _HeightCurve,int LevelOfDetail ){
-	int simpleIncrent = (LevelOfDetail == 0)? 1:LevelOfDetail*2;
+        
+        
+        int simpleIncrent = (LevelOfDetail == 0)? 1:LevelOfDetail*2;
 	AnimationCurve HeightCurve = new AnimationCurve(_HeightCurve.keys);
 	int brordedWidth = HeightMap.GetLength(0);
 	int meshSize = brordedWidth - 2*simpleIncrent;
@@ -15,7 +18,7 @@ public static MeshData GenerateTerrainMesh(float[,] HeightMap,float HeightMultip
 	
 	int verticesPerLine = (meshSize-1)/simpleIncrent + 1;
 	MeshData meshData = new MeshData (verticesPerLine);
-	int[,] vertexInices = new int[brordedWidth,brordedWidth] ;
+	 int[,] vertexInices = new int[brordedWidth,brordedWidth] ;
 	int meshvertexIndex = 0 ;
 	int BordervertexIndex = - 1 ;
 	int vertexIndex  = 0;
@@ -46,7 +49,7 @@ public static MeshData GenerateTerrainMesh(float[,] HeightMap,float HeightMultip
 				int b = vertexInices[x + simpleIncrent,y];
 				int c = vertexInices[x,y + simpleIncrent];
 				int d = vertexInices[x + simpleIncrent,y + simpleIncrent];
-				meshData.AddTriangle(a,d,c);
+                meshData.AddTriangle(a,d,c);
 				meshData.AddTriangle(d,a,b);
 			}
 			vertexIndex ++;
@@ -66,8 +69,9 @@ public class MeshData{
 	public Vector3[] BakedNormals ;
 	public int[] brordedTriangles;
 	int brordedTrianglesIndex;
+    
 
-	public MeshData(int verticesPerLine){
+    public MeshData(int verticesPerLine){
 
 		vertices = new Vector3[verticesPerLine * verticesPerLine ];
 		uvs = new Vector2[verticesPerLine*verticesPerLine ];
@@ -153,6 +157,7 @@ public class MeshData{
 			BakedNormals = calculateNormals();
 		}
 	public Mesh CreateMesh (){
+        
 		Mesh mesh = new Mesh();
         mesh.Clear();
 		mesh.vertices = vertices;
@@ -161,8 +166,12 @@ public class MeshData{
 		mesh.normals = BakedNormals;
 		mesh.RecalculateTangents();
 		mesh.RecalculateBounds();
-		return mesh ;
+        NavMesh.AddNavMeshData(endLessTerrain.Chunk. ChunkData, endLessTerrain.Chunk.position, Quaternion.Euler(Vector3.zero));
+        NavMesh.CalculateTriangulation();
+        
+        return mesh ;
 
 
-	}
+	} 
+    
 }

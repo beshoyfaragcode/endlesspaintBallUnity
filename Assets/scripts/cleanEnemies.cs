@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cleanEnemies : MonoBehaviour {
+public class CleanEnemies : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

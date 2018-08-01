@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System;
-
-
 using UnityEngine;
+using UnityEngine.AI;
 
 public class endLessTerrain : MonoBehaviour {
     public Enemy enemy;
@@ -111,8 +110,8 @@ public class endLessTerrain : MonoBehaviour {
 
     }
     public class Chunk {
-		 GameObject meshObj;
-		 static Vector2 position ;
+		public GameObject meshObj;
+		 public static Vector2 position ;
 		 Bounds bounds ;
 		 mapMaker.MapData mapData ;
 		 MeshRenderer meshRenderer;
@@ -121,11 +120,19 @@ public class endLessTerrain : MonoBehaviour {
 		 LODinfo [] Levels;
 		 LODmesh[] LODMeshes;
 		 LODmesh LODcollider ;
+         public static NavMeshData ChunkData;
+         NavMeshBuildSettings ChunkSettings;
+         List<NavMeshBuildSource> sources;
+         NavMeshCollectGeometry collectGeometry;
+         List<NavMeshBuildMarkup> makeup;
+        // NavMeshSurface surfaces;
+        
 
-		mapMaker.MapData mapDataChunck ;
+
+        mapMaker.MapData mapDataChunck ;
 		bool HasMapDataChunck ;
 		int PreLevelsIndex = -1 ;
-       // public Enemy enemy;
+       
 
         public Chunk (Vector2 cord,int size,LODinfo [] Levels,Transform parent,Material Mat) {
 			this.Levels = Levels;
@@ -142,8 +149,23 @@ public class endLessTerrain : MonoBehaviour {
 			meshObj.transform.localScale = Vector3.one * scale;
 			setvisable(false);
 			LODMeshes = new LODmesh[Levels.Length];
+            ChunkData = new NavMeshData();
+            ChunkSettings = new NavMeshBuildSettings();
+            sources = new List<NavMeshBuildSource>();
+            makeup = new List<NavMeshBuildMarkup>();
+            collectGeometry = new NavMeshCollectGeometry();
+            NavMeshBuilder.CollectSources(bounds, 0, collectGeometry, 0, makeup, sources);
+            ChunkData = NavMeshBuilder.BuildNavMeshData(ChunkSettings, sources, bounds, position, Quaternion.Euler(Vector3.zero));
+            NavMeshBuilder.UpdateNavMeshDataAsync(ChunkData, ChunkSettings, sources, bounds);
+            NavMesh.CreateSettings();
+          
+           
 
-			for (int i = 0; i < Levels.Length; i++){
+            
+
+
+
+            for (int i = 0; i < Levels.Length; i++){
 				LODMeshes[i] = new LODmesh(Levels[i].LOD,updateChunk);
 				if(Levels[i].useForCollider){
 					LODcollider = LODMeshes[i];
@@ -216,8 +238,10 @@ public class endLessTerrain : MonoBehaviour {
 		public void setvisable (bool visable){
 
 		 	meshObj.SetActive (visable);
-           
-           
+          
+
+
+
 
 
         }
