@@ -25,6 +25,7 @@ public class mapMaker : MonoBehaviour {
     public terrainTypes[] regions;
     public Vector2 chunckOffset ;
     public int enmayMapChunkSize;
+    public bool randomMapOnPlay;
 
     float[,] FallOffMap;
 
@@ -35,18 +36,55 @@ public class mapMaker : MonoBehaviour {
     void Awake() {
         enmayMapChunkSize = mapChunckSize;
         seed = getRandomSeed.GetSeed();
+        if (randomMapOnPlay)
+        {
+            mode = nosie.NormilizeMode.local;
+            octaves = UnityEngine.Random.Range(0, 19);
+            presistance = UnityEngine.Random.Range(0.0f, 1.0f);
+            lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+            seed = getRandomSeed.GetSeed();
+
+        }
         FallOffMap = FalloffMaker.MakefalloffMap(mapChunckSize);
     }
 
     public void DrawMap(){
         MapData mapData = MakeMap(chunckOffset);
          MapShow show = FindObjectOfType<MapShow>();
-	    if(drawMode == DrawMode.nosieMap){
-		    show.DrawTexture(textureMaker.textureFromHeightMap(mapData.HeightMap)) ;
+        
+        if (drawMode == DrawMode.nosieMap){
+            if (randomMapOnPlay)
+            {
+                mode = nosie.NormilizeMode.local;
+                octaves = UnityEngine.Random.Range(0, 10);
+                presistance = UnityEngine.Random.Range(0.0f, 1.0f);
+                lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+                seed = getRandomSeed.GetSeed();
+
+            }
+            show.DrawTexture(textureMaker.textureFromHeightMap(mapData.HeightMap)) ;
 	    }else if(drawMode == DrawMode.colorMap){
-		    show.DrawTexture(textureMaker.textureFromColorMap(mapData.colorMap,mapChunckSize,mapChunckSize));
+            if (randomMapOnPlay)
+            {
+                mode = nosie.NormilizeMode.local;
+                octaves = UnityEngine.Random.Range(0, 19);
+                presistance = UnityEngine.Random.Range(0.0f, 1.0f);
+                lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+                seed = getRandomSeed.GetSeed();
+
+            }
+            show.DrawTexture(textureMaker.textureFromColorMap(mapData.colorMap,mapChunckSize,mapChunckSize));
 	    }else if (drawMode == DrawMode.Mesh){
-		    show.DrawMesh(meshMaker.GenerateTerrainMesh(mapData.HeightMap,meshHeightMultiplier,MeshCurve,LevelOfDetail),textureMaker.textureFromColorMap(mapData.colorMap,mapChunckSize,mapChunckSize));
+            if (randomMapOnPlay)
+            {
+                mode = nosie.NormilizeMode.local;
+                octaves = UnityEngine.Random.Range(0, 19);
+                presistance = UnityEngine.Random.Range(0.0f, 1.0f);
+                lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+                seed = getRandomSeed.GetSeed();
+
+            }
+            show.DrawMesh(meshMaker.GenerateTerrainMesh(mapData.HeightMap,meshHeightMultiplier,MeshCurve,LevelOfDetail),textureMaker.textureFromColorMap(mapData.colorMap,mapChunckSize,mapChunckSize));
 	    }else if (drawMode == DrawMode.FallOffMap){
 		    show.DrawTexture(textureMaker.textureFromHeightMap(FalloffMaker.MakefalloffMap(mapChunckSize)));
 	    }

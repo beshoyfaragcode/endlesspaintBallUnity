@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 public  class meshMaker {
-    public int[,] vertexInicesPub;
+  
 
 public static MeshData GenerateTerrainMesh(float[,] HeightMap,float HeightMultiplier,AnimationCurve _HeightCurve,int LevelOfDetail ){
         
@@ -166,8 +165,7 @@ public class MeshData{
 		mesh.normals = BakedNormals;
 		mesh.RecalculateTangents();
 		mesh.RecalculateBounds();
-        NavMesh.AddNavMeshData(endLessTerrain.Chunk. ChunkData, endLessTerrain.Chunk.position, Quaternion.Euler(Vector3.zero));
-        NavMesh.CalculateTriangulation();
+       
         
         return mesh ;
 

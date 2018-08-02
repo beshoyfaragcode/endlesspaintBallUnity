@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1059911198845496}
+  m_IsPrefabAsset: 1
+--- !u!1 &1059911198845496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4692282939851524}
+  - component: {fileID: 114074306024664676}
+  - component: {fileID: 114806925542179340}
+  - component: {fileID: 114204032819474708}
+  m_Layer: 0
+  m_Name: mapMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 119
+  m_IsActive: 1
+--- !u!4 &4692282939851524
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059911198845496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 54.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114074306024664676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059911198845496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9dd06e2533e330429076648696a987a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawMode: 2
+  mode: 1
+  LevelOfDetail: 0
+  scale: 26
+  octaves: 15
+  presistance: 0.539572
+  lacunarity: 2.0395715
+  seed: 0
+  offSet: {x: 0, y: 0}
+  AtuoUpadate: 1
+  useFalloffmap: 0
+  meshHeightMultiplier: 30
+  MeshCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.40110984
+      value: 0.010407376
+      inSlope: -0.11212776
+      outSlope: -0.11212776
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13212012
+      outWeight: 0.12669057
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  regions:
+  - name: 'deep water '
+    hieght: 0
+    color: {r: 0.28751338, g: 0.8584906, b: 0.85283977, a: 0}
+  - name: water
+    hieght: 0.3
+    color: {r: 0.071155205, g: 0.3679245, b: 0.36328748, a: 0}
+  - name: sand
+    hieght: 0.4
+    color: {r: 0.7075472, g: 0.6493838, b: 0.036712356, a: 0}
+  - name: sand2
+    hieght: 0.5
+    color: {r: 1, g: 0.9208319, b: 0.033018887, a: 0}
+  - name: 'grass '
+    hieght: 0.6
+    color: {r: 0.41037738, g: 1, b: 0.43693322, a: 0}
+  - name: grass2
+    hieght: 0.65
+    color: {r: 0.08223568, g: 0.5283019, b: 0.100078315, a: 0}
+  - name: rock
+    hieght: 0.75
+    color: {r: 0.08713066, g: 0.20754719, b: 0.19077608, a: 0}
+  - name: rock2
+    hieght: 0.8
+    color: {r: 0.28657886, g: 0.33395788, b: 0.5283019, a: 0}
+  - name: snow
+    hieght: 0.9
+    color: {r: 0.80651474, g: 0.8313653, b: 0.8679245, a: 0}
+  - name: snow2
+    hieght: 0.94
+    color: {r: 1, g: 1, b: 1, a: 0}
+  chunckOffset: {x: 0, y: 0}
+  enmayMapChunkSize: 0
+--- !u!114 &114204032819474708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059911198845496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b06775b681c76468affddbc5b268a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  EmenyMap: {fileID: 0}
+  wave: {fileID: 0}
+  realscale: 1
+  viewerMoveFromChunkUpdate: 25
+  sqrViewerMoveFromChunkUpdate: 0
+  veiwer: {fileID: 0}
+  viewerPosOld: {x: 0, y: 0}
+  RealMapGen: {fileID: 114074306024664676}
+  chunkSize: 0
+  chunksInView: 10
+  mapMat: {fileID: 2100000, guid: 77279d9b796ee454ead8c372e69f6e29, type: 2}
+  Levels:
+  - LOD: 0
+    visableDstTreshhold: 100
+    useForCollider: 0
+  - LOD: 1
+    visableDstTreshhold: 150
+    useForCollider: 1
+  - LOD: 2
+    visableDstTreshhold: 200
+    useForCollider: 0
+  - LOD: 3
+    visableDstTreshhold: 250
+    useForCollider: 0
+  - LOD: 4
+    visableDstTreshhold: 300
+    useForCollider: 0
+  - LOD: 5
+    visableDstTreshhold: 350
+    useForCollider: 0
+  - LOD: 6
+    visableDstTreshhold: 400
+    useForCollider: 0
+--- !u!114 &114806925542179340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059911198845496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ee960874bc5d14a89a18f6f0c8ff44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 0}
+  meshFilter: {fileID: 0}
+  Meshrenderer: {fileID: 0}

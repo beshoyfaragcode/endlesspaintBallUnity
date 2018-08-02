@@ -33,7 +33,8 @@ public class EnemyWave : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        //SetRandomInts(Children.Length);
+       // GetEnemyMaps();
         childsize = Children.Length;
         if (SpownEnemies)
         {
@@ -43,7 +44,7 @@ public class EnemyWave : MonoBehaviour {
     }
     public void GetEnemyMaps()
     {
-        //Debug.Log(" getEnemyMaps has been called there are  " + EnemiesNow  + " Enemies on screen "  + " out of " + maxEnemies + " Enemies total ");
+      
 
         foreach (Vector2 key in Map.EnemyMaps.Keys)
         {
@@ -51,14 +52,7 @@ public class EnemyWave : MonoBehaviour {
             Vector3[,] enemyPoes = SpownEnemiesInfo(key, MapNow);
             SetPoes(MapNow, enemyPoes);
         }
-        /*
-        if (EnemiesNow < (maxEnemies * maxEnemiesPrecent))
-        {
-            Debug.Log(" calling GetEnemyMaps for the secend time because EnemiesNow  is  " + EnemiesNow + " this is less than  (maxEnemies * maxEnemiesPrecent) :  (maxEnemies * maxEnemiesPrecent) is " + (maxEnemies * maxEnemiesPrecent));
-            GetEnemyMaps();
-          
-        }
-        */
+        
       
     }
     Vector3[,] SpownEnemiesInfo(Vector2 center, float[,] map)

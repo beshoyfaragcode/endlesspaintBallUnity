@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Threading;
 using System;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class endLessTerrain : MonoBehaviour {
     public Enemy enemy;
+    public randomEnemyNoiseMap EmenyMap;
     public EnemyWave wave;
     static float scale = 1;
 	public float realscale = 1;
-	public const float viewerMoveFromChunkUpdate = 25f;
-	public const float sqrViewerMoveFromChunkUpdate = viewerMoveFromChunkUpdate * viewerMoveFromChunkUpdate;
+    public float viewerMoveFromChunkUpdate = 25f;
+	public  float sqrViewerMoveFromChunkUpdate ;
 	public static float MaxView ;
 	public Transform veiwer;
 	public static Vector2 viewerPos;
@@ -32,21 +33,29 @@ public class endLessTerrain : MonoBehaviour {
 
    
 	public void Start(){
-      
+        //
+        //enemy.UpdateEnemyMaps();
+        //
+        sqrViewerMoveFromChunkUpdate  = viewerMoveFromChunkUpdate * viewerMoveFromChunkUpdate;
         scale = realscale;
-		
-     MapGen = FindObjectOfType<mapMaker>();
+        MapGen = FindObjectOfType<mapMaker>();
 		chunkSize = mapMaker.mapChunckSize - 1;
 		MaxView = Levels[Levels.Length - 1].visableDstTreshhold ;
 		chunksInView = Mathf.RoundToInt( MaxView / chunkSize) ;
-		UpdateChunks();
+        wave.SetRandomInts(wave.childsize);
+        wave.GetEnemyMaps();
+        UpdateChunks();
 	}
 	public void Update(){
+        //wave.GetEnemyMaps();
 
-		viewerPos = new Vector2 (veiwer.position.x,veiwer.position.z) /scale;
+
+        viewerPos = new Vector2 (veiwer.position.x,veiwer.position.z) /scale;
 		if((viewerPosOld - viewerPos ).sqrMagnitude > viewerMoveFromChunkUpdate ){
 			viewerPosOld = viewerPos ;
-           wave.SetRandomInts( wave.childsize);
+
+            wave.SetRandomInts(wave.childsize);
+            wave.GetEnemyMaps();
             UpdateChunks();
             
 
@@ -75,19 +84,25 @@ public class endLessTerrain : MonoBehaviour {
 				if (chunkDictionary.ContainsKey(ViewedChunk)){
 					chunkDictionary[ViewedChunk].updateChunk();
 
+
+                    
                     
 
 				}else{
 
 					chunkDictionary.Add(ViewedChunk,new Chunk(ViewedChunk,chunkSize, Levels,transform, mapMat));
-				}
+                    float[,] Enemymap = EmenyMap.GetNoise(ViewedChunk);
+                    enemy.EnemyMaps.Add(ViewedChunk, Enemymap);
+
+                }
 			}
 		 }
       
         ThreadStart EnemyMapThread = delegate
         {
-            enemy.UpdateEnemyMaps();
+            //enemy.UpdateEnemyMaps();
             wave.GetEnemyMaps();
+            
         };
         new Thread(EnemyMapThread).Priority = System.Threading.ThreadPriority.Lowest;
         new Thread(EnemyMapThread).IsBackground = true;
@@ -104,9 +119,10 @@ public class endLessTerrain : MonoBehaviour {
     }
     private void ThreadPoolUser()
     {
-        enemy.UpdateEnemyMaps();
+        //enemy.UpdateEnemyMaps();
         wave.GetEnemyMaps();
         UpdateChunks();
+    
 
     }
     public class Chunk {
@@ -120,12 +136,7 @@ public class endLessTerrain : MonoBehaviour {
 		 LODinfo [] Levels;
 		 LODmesh[] LODMeshes;
 		 LODmesh LODcollider ;
-         public static NavMeshData ChunkData;
-         NavMeshBuildSettings ChunkSettings;
-         List<NavMeshBuildSource> sources;
-         NavMeshCollectGeometry collectGeometry;
-         List<NavMeshBuildMarkup> makeup;
-        // NavMeshSurface surfaces;
+         
         
 
 
@@ -149,15 +160,7 @@ public class endLessTerrain : MonoBehaviour {
 			meshObj.transform.localScale = Vector3.one * scale;
 			setvisable(false);
 			LODMeshes = new LODmesh[Levels.Length];
-            ChunkData = new NavMeshData();
-            ChunkSettings = new NavMeshBuildSettings();
-            sources = new List<NavMeshBuildSource>();
-            makeup = new List<NavMeshBuildMarkup>();
-            collectGeometry = new NavMeshCollectGeometry();
-            NavMeshBuilder.CollectSources(bounds, 0, collectGeometry, 0, makeup, sources);
-            ChunkData = NavMeshBuilder.BuildNavMeshData(ChunkSettings, sources, bounds, position, Quaternion.Euler(Vector3.zero));
-            NavMeshBuilder.UpdateNavMeshDataAsync(ChunkData, ChunkSettings, sources, bounds);
-            NavMesh.CreateSettings();
+          
           
            
 
