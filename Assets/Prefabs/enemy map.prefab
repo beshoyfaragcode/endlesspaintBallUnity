@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 114549524007288120}
   - component: {fileID: 114548219214169818}
   m_Layer: 0
-  m_Name: 'Enemy '
+  m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,26 +169,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24551b311e115fe47a265710119564e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemies: 100
-  EnemiesNow: 0
+  maxObjects: 100
+  ObjectsNow: 0
   timeBeforeDestroy: 2
-  enemiesToPickFrom:
+  ObjectsToPickFrom:
   - prefab: {fileID: 1807827609137252, guid: 6d645ff3c94899847847bc04c5b15d79, type: 2}
     parent: {fileID: 4479130682114826}
-    rotion: {x: 32.15, y: 0, z: 32.15}
-  - prefab: {fileID: 1807827609137252, guid: 5996bbf77df02744d9ffe986cb253e86, type: 2}
-    parent: {fileID: 4639369456546632}
-    rotion: {x: 32.15, y: 0, z: 32.15}
+    rotion: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 1807827609137252, guid: aac8d8fe55cc8194bb954627bedd72ec, type: 2}
     parent: {fileID: 4336147819171596}
-    rotion: {x: 131, y: 0, z: 41}
+    rotion: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 1807827609137252, guid: 5996bbf77df02744d9ffe986cb253e86, type: 2}
+    parent: {fileID: 4639369456546632}
+    rotion: {x: 0, y: 0, z: 0}
   Map: {fileID: 114549524007288120}
-  enemyYPos: 50
+  ObjectYPos: 50
   randomInts: 
   randomIntsSize: 5
   Children: []
   childsize: 0
-  maxEnemiesPrecent: 0.5
+  maxObjectsPrecent: 0.5
 --- !u!114 &114549524007288120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapEndLess: {fileID: 0}
   map: {fileID: 0}
-  EmenyMap: {fileID: 114804904090577882}
+  ObjectMap: {fileID: 114804904090577882}
 --- !u!114 &114804904090577882
 MonoBehaviour:
   m_ObjectHideFlags: 1

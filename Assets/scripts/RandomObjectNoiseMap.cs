@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class randomEnemyNoiseMap : MonoBehaviour {
+public class RandomObjectNoiseMap : MonoBehaviour {
     int height;
     int width;
     float scale;

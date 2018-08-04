@@ -4,21 +4,21 @@ using UnityEngine;
 
 
 
-public class EnemyWave : MonoBehaviour {
-    public int maxEnemies;
-    public int EnemiesNow;
+public class ObjectWave : MonoBehaviour {
+    public int maxObjects;
+    public int ObjectsNow;
     public float timeBeforeDestroy = 2f;
-    public EnemyData[] enemiesToPickFrom;
-    public Enemy Map;
-    public float enemyYPos = 50f;
+    public ObjectData[] ObjectsToPickFrom;
+    public Objects Map;
+    public float ObjectYPos = 50f;
     public int[] randomInts;
     public  int randomIntsSize;
     public Transform[] Children;
     public int childsize;
     Vector3 pos;
     float noiseVal;
-    private bool SpownEnemies;
-    public float maxEnemiesPrecent = 0.5f;
+    private bool SpownObject;
+    public float maxObjectsPrecent = 0.5f;
     
 
 
@@ -36,29 +36,29 @@ public class EnemyWave : MonoBehaviour {
         //SetRandomInts(Children.Length);
        // GetEnemyMaps();
         childsize = Children.Length;
-        if (SpownEnemies)
+        if (SpownObject)
         {
-            SpownEnemy(pos, noiseVal);
-            SpownEnemies = false;
+            SpownObjects(pos, noiseVal);
+            SpownObject = false;
         }
     }
-    public void GetEnemyMaps()
+    public void GetObjectMaps()
     {
       
 
-        foreach (Vector2 key in Map.EnemyMaps.Keys)
+        foreach (Vector2 key in Map.ObjectMaps.Keys)
         {
-            float[,] MapNow = Map.EnemyMaps[key];
-            Vector3[,] enemyPoes = SpownEnemiesInfo(key, MapNow);
-            SetPoes(MapNow, enemyPoes);
+            float[,] MapNow = Map.ObjectMaps[key];
+            Vector3[,] ObjectPoes = SpownObjectsInfo(key, MapNow);
+            SetPoes(MapNow, ObjectPoes);
         }
         
       
     }
-    Vector3[,] SpownEnemiesInfo(Vector2 center, float[,] map)
+    Vector3[,] SpownObjectsInfo(Vector2 center, float[,] map)
     {
         Vector2 RealCenter = center * Map.map.enmayMapChunkSize;
-        Vector3[,] allEnemyPostions = new Vector3[map.GetLength(0), map.GetLength(1)];
+        Vector3[,] allObjectPostions = new Vector3[map.GetLength(0), map.GetLength(1)];
 
         for (int x = 0; x < map.GetLength(0); x++)
         {
@@ -67,13 +67,13 @@ public class EnemyWave : MonoBehaviour {
                 float xOffset = (Map.map.enmayMapChunkSize / 2) - (center.x - 1);
                 float yOffSet = (Map.map.enmayMapChunkSize / 2) - (center.y - 1);
                 Vector2 offSet = new Vector2(xOffset, yOffSet);
-                Vector2 enemyPos2D = RealCenter + offSet;
-                Vector3 enemyPos = new Vector3(enemyPos2D.x, enemyYPos, enemyPos2D.y);
-                allEnemyPostions[x, y] = enemyPos;
+                Vector2 ObjectPos2D = RealCenter + offSet;
+                Vector3 ObjectPos = new Vector3(ObjectPos2D.x, ObjectYPos, ObjectPos2D.y);
+                allObjectPostions[x, y] = ObjectPos;
 
             }
         }
-        return allEnemyPostions;
+        return allObjectPostions;
     }
     void SetPoes(float[,] noise, Vector3[,] poes)
     {
@@ -89,21 +89,21 @@ public class EnemyWave : MonoBehaviour {
                 {
                     pos = poes[x, y];
                     noiseVal = noise[x, y];
-                    SpownEnemies = true;
-                    //SpownEnemy(pos, noiseVal);
+                    SpownObject = true;
+                    
                 }
             }
         }
 
     }
-    void SpownEnemy(Vector3 pos, float probablity)
+    void SpownObjects(Vector3 pos, float probablity)
     {
         if (randomInts.Length == 0)
         {
             Debug.LogError(" randomInts has a a size of zero seting it to defalt values  ");
-            int w = enemiesToPickFrom.Length - 1;
-            int x = enemiesToPickFrom.Length - 1;
-            Children = enemiesToPickFrom[x].parent.GetComponentsInChildren<Transform>(true);
+            int w = ObjectsToPickFrom.Length - 1;
+            int x = ObjectsToPickFrom.Length - 1;
+            Children = ObjectsToPickFrom[x].parent.GetComponentsInChildren<Transform>(true);
             int y = Children.Length - 1;
             int z = 50;
             randomInts[1] = w;
@@ -113,29 +113,29 @@ public class EnemyWave : MonoBehaviour {
 
         }
         int i = randomInts[1];
-        Quaternion rot = Quaternion.Euler(enemiesToPickFrom[i].rotion);
+        Quaternion rot = Quaternion.Euler(ObjectsToPickFrom[i].rotion);
 
-        if (EnemiesNow >= maxEnemies)
+        if (ObjectsNow >= maxObjects)
         {
             //Destroy enemy
             int x = randomInts[2];
-            Children = enemiesToPickFrom[x].parent.GetComponentsInChildren<Transform>(true);
-            for (int z = 0; z < enemiesToPickFrom.Length; z++)
+            Children = ObjectsToPickFrom[x].parent.GetComponentsInChildren<Transform>(true);
+            for (int z = 0; z < ObjectsToPickFrom.Length; z++)
             {
-                Children = enemiesToPickFrom[z].parent.GetComponentsInChildren<Transform>(true);
+                Children = ObjectsToPickFrom[z].parent.GetComponentsInChildren<Transform>(true);
                 for (int a = 0; a < Children.Length; a++)
                 {
                     if (Children[a].transform.position.y <= -5)
                     {
                         Destroy(Children[a].gameObject, timeBeforeDestroy);
-                        if (EnemiesNow <= 0)
+                        if (ObjectsNow <= 0)
                         {
-                            EnemiesNow = 0;
-                            SpownEnemy(pos, probablity);
+                            ObjectsNow= 0;
+                            SpownObjects(pos, probablity);
                         }
                         else
                         {
-                            EnemiesNow--;
+                           ObjectsNow--;
 
                         }
 
@@ -143,17 +143,17 @@ public class EnemyWave : MonoBehaviour {
                     }
                     else
                     {
-                        Children = enemiesToPickFrom[i].parent.GetComponentsInChildren<Transform>(true);
+                        Children = ObjectsToPickFrom[i].parent.GetComponentsInChildren<Transform>(true);
                         int y = randomInts[3];
                         Destroy(Children[y].gameObject, timeBeforeDestroy);
-                        if (EnemiesNow < 0)
+                        if (ObjectsNow < 0)
                         {
-                            EnemiesNow = 0;
-                            SpownEnemy(pos, probablity);
+                            ObjectsNow = 0;
+                            SpownObjects(pos, probablity);
                         }
                         else
                         {
-                            EnemiesNow--;
+                            ObjectsNow--;
 
                         }
 
@@ -174,8 +174,8 @@ public class EnemyWave : MonoBehaviour {
             if (CheckProb(probablity))
             {
 
-                Instantiate(enemiesToPickFrom[i].prefab, pos, rot, enemiesToPickFrom[i].parent);
-                EnemiesNow++;
+                Instantiate(ObjectsToPickFrom[i].prefab, pos, rot, ObjectsToPickFrom[i].parent);
+                ObjectsNow++;
             }
             else
             {
@@ -208,7 +208,7 @@ public class EnemyWave : MonoBehaviour {
         }
     }
     [System.Serializable]
-    public struct EnemyData
+    public struct ObjectData
     {
 
         public GameObject prefab;
@@ -220,8 +220,8 @@ public class EnemyWave : MonoBehaviour {
     public   void SetRandomInts( int childrenSize)
     {
         
-        int w = Random.Range(0, enemiesToPickFrom.Length);
-        int x = Random.Range(0, enemiesToPickFrom.Length);
+        int w = Random.Range(0, ObjectsToPickFrom.Length);
+        int x = Random.Range(0, ObjectsToPickFrom.Length);
         int y;
         if (childrenSize != 0)
         {
@@ -229,7 +229,7 @@ public class EnemyWave : MonoBehaviour {
         }
         else
         {
-            Children = enemiesToPickFrom[x].parent.GetComponentsInChildren<Transform>(true);
+            Children = ObjectsToPickFrom[x].parent.GetComponentsInChildren<Transform>(true);
             y = Random.Range(0, childrenSize);
         }
         

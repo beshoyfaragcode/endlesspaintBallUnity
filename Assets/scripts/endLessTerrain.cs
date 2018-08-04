@@ -6,9 +6,9 @@ using UnityEngine;
 
 
 public class endLessTerrain : MonoBehaviour {
-    public Enemy enemy;
-    public randomEnemyNoiseMap EmenyMap;
-    public EnemyWave wave;
+    public Objects Object;
+    public RandomObjectNoiseMap ObjectMap;
+    public ObjectWave wave;
     static float scale = 1;
 	public float realscale = 1;
     public float viewerMoveFromChunkUpdate = 25f;
@@ -43,11 +43,11 @@ public class endLessTerrain : MonoBehaviour {
 		MaxView = Levels[Levels.Length - 1].visableDstTreshhold ;
 		chunksInView = Mathf.RoundToInt( MaxView / chunkSize) ;
         wave.SetRandomInts(wave.childsize);
-        wave.GetEnemyMaps();
+        wave.GetObjectMaps();
         UpdateChunks();
 	}
 	public void Update(){
-        //wave.GetEnemyMaps();
+        
 
 
         viewerPos = new Vector2 (veiwer.position.x,veiwer.position.z) /scale;
@@ -55,7 +55,7 @@ public class endLessTerrain : MonoBehaviour {
 			viewerPosOld = viewerPos ;
 
             wave.SetRandomInts(wave.childsize);
-            wave.GetEnemyMaps();
+            wave.GetObjectMaps();
             UpdateChunks();
             
 
@@ -91,23 +91,23 @@ public class endLessTerrain : MonoBehaviour {
 				}else{
 
 					chunkDictionary.Add(ViewedChunk,new Chunk(ViewedChunk,chunkSize, Levels,transform, mapMat));
-                    float[,] Enemymap = EmenyMap.GetNoise(ViewedChunk);
-                    enemy.EnemyMaps.Add(ViewedChunk, Enemymap);
+                    float[,] Enemymap = ObjectMap.GetNoise(ViewedChunk);
+                    Object.ObjectMaps.Add(ViewedChunk, Enemymap);
 
                 }
 			}
 		 }
       
-        ThreadStart EnemyMapThread = delegate
+        ThreadStart ObjectMapThread = delegate
         {
             //enemy.UpdateEnemyMaps();
-            wave.GetEnemyMaps();
+            wave.GetObjectMaps();
             
         };
-        new Thread(EnemyMapThread).Priority = System.Threading.ThreadPriority.Lowest;
-        new Thread(EnemyMapThread).IsBackground = true;
+        new Thread(ObjectMapThread).Priority = System.Threading.ThreadPriority.Lowest;
+        new Thread(ObjectMapThread).IsBackground = true;
         Debug.Log("getingEnemyMapFromThread");
-        new Thread(EnemyMapThread).Start();
+        new Thread(ObjectMapThread).Start();
         Debug.Log("gotEnemyMapFromThread");
 
     }
@@ -119,8 +119,8 @@ public class endLessTerrain : MonoBehaviour {
     }
     private void ThreadPoolUser()
     {
-        //enemy.UpdateEnemyMaps();
-        wave.GetEnemyMaps();
+       
+        wave.GetObjectMaps();
         UpdateChunks();
     
 

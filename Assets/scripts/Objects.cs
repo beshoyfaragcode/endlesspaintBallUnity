@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Enemy : MonoBehaviour {
+public class Objects : MonoBehaviour {
     public endLessTerrain mapEndLess;
     public mapMaker map;
-    public randomEnemyNoiseMap EmenyMap;
-    public Dictionary<Vector2, float[,]> EnemyMaps = new Dictionary<Vector2, float[,]>();
+    public RandomObjectNoiseMap ObjectMap;
+    public Dictionary<Vector2, float[,]> ObjectMaps = new Dictionary<Vector2, float[,]>();
 
     // Use this for initialization
     void Start() {
@@ -19,11 +19,7 @@ public class Enemy : MonoBehaviour {
 
     }
    
-    public  void UpdateEnemyMaps()
-    {
-
-          
-        }
+   
 
     }
 
