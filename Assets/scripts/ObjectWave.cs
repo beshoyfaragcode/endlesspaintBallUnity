@@ -19,16 +19,28 @@ public class ObjectWave : MonoBehaviour {
     float noiseVal;
     private bool SpownObject;
     public float maxObjectsPrecent = 0.5f;
-    
+   // public Shader matShad;
+
 
 
     // Use this for initialization
     void Start() {
-       
         
+        maxObjects = maxObjects * ObjectsToPickFrom.Length;
+
+        MakeParentsFromArray();
         randomInts = new int[randomIntsSize];
        
         
+    }
+    void MakeParentsFromArray()
+    {
+        for (int i = 0; i < ObjectsToPickFrom.Length; i++)
+        {
+            GameObject ObjParent = new GameObject(ObjectsToPickFrom[i].prefab.name);
+            ObjParent = Instantiate(ObjParent, Vector3.zero, Quaternion.Euler(Vector3.zero), gameObject.transform);
+            ObjectsToPickFrom[i].parent = ObjParent.transform;
+        }
     }
 
     // Update is called once per frame
@@ -173,8 +185,19 @@ public class ObjectWave : MonoBehaviour {
         {
             if (CheckProb(probablity))
             {
+                
+                //Material mat = new Material(matShad);
+                ObjectsToPickFrom[i].prefab.AddComponent<Rigidbody>();
+                ObjectsToPickFrom[i].prefab.AddComponent<MeshFilter>();
+                MeshRenderer Meshrenderer =  ObjectsToPickFrom[i].prefab.AddComponent<MeshRenderer>();
+               // Meshrenderer.material = mat;
+                Object asset = new Object();
+                
+                
 
-                Instantiate(ObjectsToPickFrom[i].prefab, pos, rot, ObjectsToPickFrom[i].parent);
+
+                GameObject obj =  Instantiate(ObjectsToPickFrom[i].prefab, pos, rot, ObjectsToPickFrom[i].parent);
+                obj.tag = ObjectsToPickFrom[i].tagName;
                 ObjectsNow++;
             }
             else
@@ -210,7 +233,8 @@ public class ObjectWave : MonoBehaviour {
     [System.Serializable]
     public struct ObjectData
     {
-
+        public string tagName;
+        public enum OBJType { tree, rock , other  };
         public GameObject prefab;
         public Transform parent;
         public Vector3 rotion;

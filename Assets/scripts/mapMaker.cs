@@ -39,9 +39,9 @@ public class mapMaker : MonoBehaviour {
         if (randomMapOnPlay)
         {
             mode = nosie.NormilizeMode.local;
-            octaves = UnityEngine.Random.Range(0, 19);
-            presistance = UnityEngine.Random.Range(0.0f, 1.0f);
-            lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+            octaves = UnityEngine.Random.Range(0, 10);
+            presistance = UnityEngine.Random.Range(0.0f, 0.77f);
+            lacunarity = UnityEngine.Random.Range(0.0f, 3.0f);
             seed = getRandomSeed.GetSeed();
 
         }
@@ -57,8 +57,8 @@ public class mapMaker : MonoBehaviour {
             {
                 mode = nosie.NormilizeMode.local;
                 octaves = UnityEngine.Random.Range(0, 10);
-                presistance = UnityEngine.Random.Range(0.0f, 1.0f);
-                lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+                presistance = UnityEngine.Random.Range(0.0f, 0.77f);
+                lacunarity = UnityEngine.Random.Range(0.0f, 3.0f);
                 seed = getRandomSeed.GetSeed();
 
             }
@@ -67,9 +67,9 @@ public class mapMaker : MonoBehaviour {
             if (randomMapOnPlay)
             {
                 mode = nosie.NormilizeMode.local;
-                octaves = UnityEngine.Random.Range(0, 19);
-                presistance = UnityEngine.Random.Range(0.0f, 1.0f);
-                lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+                octaves = UnityEngine.Random.Range(0, 10);
+                presistance = UnityEngine.Random.Range(0.0f, 0.77f);
+                lacunarity = UnityEngine.Random.Range(0.0f, 3.0f);
                 seed = getRandomSeed.GetSeed();
 
             }
@@ -78,9 +78,9 @@ public class mapMaker : MonoBehaviour {
             if (randomMapOnPlay)
             {
                 mode = nosie.NormilizeMode.local;
-                octaves = UnityEngine.Random.Range(0, 19);
-                presistance = UnityEngine.Random.Range(0.0f, 1.0f);
-                lacunarity = UnityEngine.Random.Range(0.0f, 4.0f);
+                octaves = UnityEngine.Random.Range(0, 10);
+                presistance = UnityEngine.Random.Range(0.0f, 0.77f);
+                lacunarity = UnityEngine.Random.Range(0.0f, 3.0f);
                 seed = getRandomSeed.GetSeed();
 
             }
