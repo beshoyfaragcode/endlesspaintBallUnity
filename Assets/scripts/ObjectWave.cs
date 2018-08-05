@@ -19,7 +19,8 @@ public class ObjectWave : MonoBehaviour {
     float noiseVal;
     private bool SpownObject;
     public float maxObjectsPrecent = 0.5f;
-   // public Shader matShad;
+    public float ObjMinYPos;
+   
 
 
 
@@ -185,15 +186,40 @@ public class ObjectWave : MonoBehaviour {
         {
             if (CheckProb(probablity))
             {
+
                 
-                //Material mat = new Material(matShad);
-                ObjectsToPickFrom[i].prefab.AddComponent<Rigidbody>();
-                ObjectsToPickFrom[i].prefab.AddComponent<MeshFilter>();
-                MeshRenderer Meshrenderer =  ObjectsToPickFrom[i].prefab.AddComponent<MeshRenderer>();
-               // Meshrenderer.material = mat;
-                Object asset = new Object();
-                
-                
+                if (ObjectsToPickFrom[i].prefab.GetComponent<Rigidbody>() == null)
+                {
+                    ObjectsToPickFrom[i].prefab.AddComponent<Rigidbody>();
+                }
+                if (ObjectsToPickFrom[i].prefab.GetComponent<MeshFilter>() == null)
+                {
+                    ObjectsToPickFrom[i].prefab.AddComponent<MeshFilter>();
+                }
+                if (ObjectsToPickFrom[i].prefab.GetComponent<MeshCollider>() == null)
+                {
+                    ObjectsToPickFrom[i].prefab.AddComponent<MeshCollider>();
+                }
+                MeshCollider collider = ObjectsToPickFrom[i].prefab.GetComponent<MeshCollider>();
+                if (ObjectsToPickFrom[i].prefab.GetComponent<MeshRenderer>() == null)
+                {
+                    ObjectsToPickFrom[i].prefab.AddComponent<MeshRenderer>();
+                }
+                MeshRenderer Meshrenderer = ObjectsToPickFrom[i].prefab.GetComponent<MeshRenderer>();
+                collider.convex = true;
+                if (ObjectsToPickFrom[i].prefab.GetComponent<ClampYpos>() == null)
+                {
+                    ObjectsToPickFrom[i].prefab.AddComponent< ClampYpos>();
+                }
+                ClampYpos  OBjkiler = ObjectsToPickFrom[i].prefab.GetComponent<ClampYpos>();
+                OBjkiler.minYPos = ObjMinYPos;
+                OBjkiler.retrunYPos = ObjectYPos;
+                OBjkiler.OffSetRange = ObjectYPos * Random.Range(-ObjectYPos , ObjectYPos );
+
+
+
+
+
 
 
                 GameObject obj =  Instantiate(ObjectsToPickFrom[i].prefab, pos, rot, ObjectsToPickFrom[i].parent);
@@ -217,7 +243,7 @@ public class ObjectWave : MonoBehaviour {
 
         }
     }
-    bool CheckProb(float prob)
+   public bool CheckProb(float prob)
     {
         int x = Mathf.RoundToInt(prob * 100);
         int check = randomInts[4];

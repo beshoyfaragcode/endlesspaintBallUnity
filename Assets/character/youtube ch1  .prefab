@@ -980,7 +980,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   character: {fileID: 4985988661937642}
   movecam: {fileID: 0}
-  offset: {x: -0.26, y: -0.2, z: 1}
+  offset: {x: -0.26, y: -0.2, z: 0.6915139}
   gunPosAtStart: {x: 0.26, y: 1.6599998, z: 0}
 --- !u!114 &114461654931106654
 MonoBehaviour:

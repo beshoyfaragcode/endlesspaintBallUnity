@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 54220060689898668}
   - component: {fileID: 135277954893704912}
   - component: {fileID: 114421028840000288}
+  - component: {fileID: 64255584992920334}
+  - component: {fileID: 114412722699635746}
   m_Layer: 0
   m_Name: sphere
   m_TagString: Untagged
@@ -101,6 +103,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!64 &64255584992920334
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807827609137252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114412722699635746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807827609137252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0fec1f9fea66284f9d2887ea7a7f5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minYPos: -20
+  retrunYPos: 50
+  OffSetRange: 2411.3457
 --- !u!114 &114421028840000288
 MonoBehaviour:
   m_ObjectHideFlags: 1
