@@ -6,7 +6,6 @@ public class randomSky : MonoBehaviour {
     Material material;
     Shader sky;
     public mapMaker map;
-    public luncher luncher ;
     public Gradient colors ;
 
 
@@ -25,7 +24,7 @@ public class randomSky : MonoBehaviour {
     void setUp () {
         sky = Shader.Find("Skybox/Procedural");
         material = new Material(sky);
-        colors = luncher.GetLevelsGradient(map);
+        colors = GetLevelsGradient.GetLevelsGradientFromMap(map);
     }
     void changeSkyBoxMat()
     {

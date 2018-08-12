@@ -184,7 +184,7 @@ public class ObjectWave : MonoBehaviour {
         
         else
         {
-            if (CheckProb(probablity))
+            if ( probability.CheckProb(probablity))
             {
 
                 
@@ -198,7 +198,11 @@ public class ObjectWave : MonoBehaviour {
                 }
                 if (ObjectsToPickFrom[i].prefab.GetComponent<MeshCollider>() == null)
                 {
-                    ObjectsToPickFrom[i].prefab.AddComponent<MeshCollider>();
+                    if (ObjectsToPickFrom[i].prefab.GetComponent<BoxCollider>() == null || ObjectsToPickFrom[i].prefab.GetComponent<SphereCollider>() == null)
+                    {
+                        ObjectsToPickFrom[i].prefab.AddComponent<MeshCollider>();
+                    }
+                    
                 }
                 MeshCollider collider = ObjectsToPickFrom[i].prefab.GetComponent<MeshCollider>();
                 if (ObjectsToPickFrom[i].prefab.GetComponent<MeshRenderer>() == null)
@@ -243,19 +247,7 @@ public class ObjectWave : MonoBehaviour {
 
         }
     }
-   public bool CheckProb(float prob)
-    {
-        int x = Mathf.RoundToInt(prob * 100);
-        int check = randomInts[4];
-        if (check <= x)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+  
     [System.Serializable]
     public struct ObjectData
     {

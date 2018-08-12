@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 65600896109557582}
   - component: {fileID: 54220060689898668}
   - component: {fileID: 114384735084179986}
-  - component: {fileID: 64768680264268696}
   - component: {fileID: 114615749945046092}
+  - component: {fileID: 64597808818133446}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -103,7 +103,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!64 &64768680264268696
+--- !u!64 &64597808818133446
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,8 +170,6 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   map: {fileID: 114074306024664676, guid: 9d731f8bcec29e941b4477c7ed17829c, type: 2}
-  MapToColors: {fileID: 114176110252063974, guid: bd0e26c2706265c44970df46e79d7a3c,
-    type: 2}
 --- !u!114 &114615749945046092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,4 +183,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minYPos: -20
   retrunYPos: 50
-  OffSetRange: -2349.3362
+  OffSetRange: 1939.2144

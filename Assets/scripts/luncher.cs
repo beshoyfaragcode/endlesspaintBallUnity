@@ -16,7 +16,7 @@ public class luncher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		 colorsGradient = GetLevelsGradient(Map);
+		 colorsGradient =  GetLevelsGradient.GetLevelsGradientFromMap(Map);
 		
 		hits = new  List <ParticleCollisionEvent> ();
 	}
@@ -59,28 +59,5 @@ public class luncher : MonoBehaviour {
 		}
 		
 	}
-	public Gradient GetLevelsGradient(mapMaker mapToGetFrom){
-		//
-	 mapMaker.terrainTypes[] levels;
-    levels = mapToGetFrom.regions ;
-	int clamp = levels.Length;
-	 clamp = Mathf.Clamp(clamp,levels.Length,8) ;
-	 GradientColorKey[] MyKeys = new GradientColorKey[clamp]  ;
 	
-	
-	for(int i = 0 ; i < clamp ;i++){
-
-		
-		MyKeys[i].color = levels[i].color;
-		MyKeys[i].time = levels[i].hieght;
-		
-		
-
-	}
-	Gradient retrunGradient =  new Gradient() ;
-	retrunGradient.SetKeys(MyKeys,retrunGradient.alphaKeys);
-	return  retrunGradient;
-
-
-	}
 }

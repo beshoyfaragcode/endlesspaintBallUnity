@@ -6,7 +6,6 @@ public class characterChangeColor : MonoBehaviour {
 		
 	public Gradient colors ;
 	public mapMaker map;
-	public luncher MapToColors ;
 	//hide later 
 	 SkinnedMeshRenderer characterMesh;
 	 SkinnedMeshRenderer newCharacterMesh;
@@ -26,8 +25,12 @@ public class characterChangeColor : MonoBehaviour {
 		setMaterialColor(randomColorsFromGradient,characterMats); 
 		if(characterMesh == null ){
 			characterMeshRend.materials =  characterMats ;
-		} 
-		characterMesh.materials =  characterMats ;
+        }
+        else
+        {
+            characterMesh.materials = characterMats;
+        }
+		
 
 	}
 	
@@ -41,7 +44,7 @@ public class characterChangeColor : MonoBehaviour {
 		if(characterMesh == null ){
 	    characterMeshRend = this.GetComponent<MeshRenderer>();
 		}
-		colors = MapToColors.GetLevelsGradient(map);
+		colors = GetLevelsGradient.GetLevelsGradientFromMap(map);
 		if(characterMesh == null ){
 			characterMats = characterMeshRend.materials ;
 		} else {

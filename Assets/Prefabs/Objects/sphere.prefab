@@ -22,10 +22,9 @@ GameObject:
   - component: {fileID: 33776187173485596}
   - component: {fileID: 23834208819840514}
   - component: {fileID: 54220060689898668}
-  - component: {fileID: 135277954893704912}
   - component: {fileID: 114421028840000288}
-  - component: {fileID: 64255584992920334}
   - component: {fileID: 114412722699635746}
+  - component: {fileID: 64479071382063966}
   m_Layer: 0
   m_Name: sphere
   m_TagString: Untagged
@@ -103,7 +102,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!64 &64255584992920334
+--- !u!64 &64479071382063966
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minYPos: -20
   retrunYPos: 50
-  OffSetRange: 2411.3457
+  OffSetRange: 1054.2017
 --- !u!114 &114421028840000288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,17 +171,3 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   map: {fileID: 114074306024664676, guid: 9d731f8bcec29e941b4477c7ed17829c, type: 2}
-  MapToColors: {fileID: 114176110252063974, guid: bd0e26c2706265c44970df46e79d7a3c,
-    type: 2}
---- !u!135 &135277954893704912
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1807827609137252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}

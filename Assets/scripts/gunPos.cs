@@ -14,28 +14,28 @@ public class gunPos : MonoBehaviour {
 		gunPosAtStart = transform.localPosition ;
 	}
 
-	void Update()
+	void LateUpdate()
 	{
-		setGunRotitionFP ();
+		SetGunRotitionFP ();
 		if(movecam.fristPersonCam){
 			Debug.Log( "frist preson ");
-			setGunPositionFP();
+			SetGunPositionFP();
 		}if(movecam.thridPersonCam) {
 			Debug.Log("thrid  preson ");
-			reSetGunPos();
+			ReSetGunPos();
 		}
 	
 
 	}
-	void setGunPositionFP (){
+	void SetGunPositionFP (){
 		transform.position = cam.transform.position + offset ;
-        setGunRotitionFP ();
+        SetGunRotitionFP ();
 	}
-	void reSetGunPos (){
+	void ReSetGunPos (){
 		transform.position = character.position + gunPosAtStart;
-        setGunRotitionFP ();
+        SetGunRotitionFP ();
 	}
-	void setGunRotitionFP (){
+	void SetGunRotitionFP (){
 		transform.rotation = cam.transform.rotation ;
 	}
 
